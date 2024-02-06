@@ -74,6 +74,7 @@ func (s Sender) SendSms(message SmsMessage) (*SendSmsResponse, error) {
 		return nil, err
 	}
 
+    defer res.Body.Close()
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
